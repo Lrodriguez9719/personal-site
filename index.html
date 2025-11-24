@@ -114,33 +114,31 @@
                 const response = await fetch(`${SERVER_URL}/videos`);
                 const videos = await response.json();
 
-                container.innerHTML = ''; // Clear loading message
+                container.innerHTML = ''; 
 
-                videos.forEach(filename => {
+                videos.forEach(video => {
                     // Create card HTML structure
                     const card = document.createElement('div');
                     card.className = 'video-card';
                     
-                    // Clean up filename for display (remove extension)
-                    const displayName = filename.replace(/\.[^/.]+$/, "").replace(/-/g, " ");
-
                     card.innerHTML = `
                         <div class="video-wrapper">
                             <video controls preload="metadata">
-                                <source src="${SERVER_URL}/video/${filename}" type="video/mp4">
+                                <source src="${SERVER_URL}/video/${video.filename}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         <div class="video-info">
-                            <div class="video-title">${displayName}</div>
-                            <span class="tag">Music Video</span>
+                            <div class="video-title">${video.title}</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">${video.artist}</div>
+                            <span class="tag">${video.description || 'Music Video'}</span>
                         </div>
                     `;
                     container.appendChild(card);
                 });
             } catch (error) {
                 console.error('Error loading videos:', error);
-                container.innerHTML = '<p>Error connecting to video server. Make sure the Node backend is running.</p>';
+                container.innerHTML = '<p>Error connecting to video server.</p>';
             }
         }
 
