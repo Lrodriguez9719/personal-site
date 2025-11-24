@@ -1,30 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Site</title>
-  <link rel="stylesheet" href="./styles/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Rodriguez | Streaming</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent: #bb86fc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; }
+        h2 { color: var(--text-secondary); font-weight: 400; font-size: 1.2rem; margin-top: 0.5rem; }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            outline: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #333;
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-  <h1>
-    Hi! My name is Luis Rodriguez. Nice to meet you!
-  </h1>
-  <h2>
-    Now officially online.
-  </h2>
-  <!-- Video Player Section -->
-  <div style="margin: 20px 0;">
-    <h3>My Streaming Project</h3>
-    <video id="videoPlayer" width="100%" controls muted>
-      <source src="http://localhost:3000/video" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <p>
-    <a href="./pages/about.html">About Me</a>
-  </p>
 
-  <script src="./js/index.js" defer></script>
+    <header>
+        <h1>Some of my favorite songs</h1>
+        <h2>made by Luis Rodriguez</h2>
+    </header>
+
+    <main>
+        <div id="videoContainer" class="video-grid">
+            <!-- Videos will be injected here by JS -->
+            <p style="color: var(--text-secondary)">Loading videos...</p>
+        </div>
+    </main>
+
+    <script>
+        const SERVER_URL = 'http://localhost:3000';
+
+        async function loadVideos() {
+            const container = document.getElementById('videoContainer');
+            
+            try {
+                const response = await fetch(`${SERVER_URL}/videos`);
+                const videos = await response.json();
+
+                container.innerHTML = ''; // Clear loading message
+
+                videos.forEach(filename => {
+                    // Create card HTML structure
+                    const card = document.createElement('div');
+                    card.className = 'video-card';
+                    
+                    // Clean up filename for display (remove extension)
+                    const displayName = filename.replace(/\.[^/.]+$/, "").replace(/-/g, " ");
+
+                    card.innerHTML = `
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="${SERVER_URL}/video/${filename}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">${displayName}</div>
+                            <span class="tag">Music Video</span>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading videos:', error);
+                container.innerHTML = '<p>Error connecting to video server. Make sure the Node backend is running.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadVideos);
+    </script>
 </body>
 </html>
