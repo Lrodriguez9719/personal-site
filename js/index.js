@@ -23,7 +23,7 @@ async function loadVideos() {
                         </div>
                         <div class="video-info">
                             <div class="video-title">${video.title}</div>
-                            <div style="color: var(--text-secondary); font-size: 0.9rem;">${video.artist}</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">By: ${video.artist}</div>
                             <span class="tag">${video.description || 'Music Video'}</span>
                         </div>
                     `;
