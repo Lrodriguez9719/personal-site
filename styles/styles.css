@@ -1,9 +1,9 @@
 :root {
-  --bg-color: #121212;
-  --card-bg: #1e1e1e;
-  --text-primary: #ffffff;
-  --text-secondary: #b3b3b3;
-  --accent: #bb86fc;
+  --bg-color: #0f0f0f;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --card-bg: #1a1a1a;
+  --accent: #4a9eff;
 }
 
 body {
