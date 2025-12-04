@@ -19,7 +19,7 @@
   <nav class="nav-bar">
     <!-- <a href="../index.html" class="nav-link">← Back to Home</a> -->
     <div class="nav-actions">
-      <a href="./resume/Luis_Rodriguez_Resume.pdf" download class="print-btn" style="text-decoration: none;" class="download-resume-btn">
+      <a href="./resume/Luis_Rodriguez_Resume.pdf" download class="print-btn download-resume-btn" style="text-decoration: none;">
         Download as PDF
       </a>
     </div>
@@ -271,6 +271,7 @@
 
   <script>
     document.querySelector('.download-resume-btn').addEventListener('click', function() {
+      console.log("Resume download button clicked");
       gtag('event', 'resume_download', {
         'event_category': 'engagement',
         'event_label': 'Resume Downloaded'
