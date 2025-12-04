@@ -1,35 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Rodriguez | Streaming</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0YN69295Z7"></script>
-    <script src="../js/analytics.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luis Rodriguez | Streaming</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/video_streaming.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0YN69295Z7"></script>
+  <script src="../js/analytics.js"></script>
 </head>
+
 <body>
-    <nav class="nav-bar">
-        <a href="../index.html" class="nav-link">← Back to Home</a>
-        <!-- <div class="nav-actions">
-        <a href="./resume/Luis_Rodriguez_Resume.pdf" download class="print-btn" style="text-decoration: none;">
-            Download as PDF
-        </a>
+  <nav class="nav-bar">
+    <a href="../index.html" class="nav-link">← Back to Home</a>
+  </nav>
+
+  <header>
+    <h1>Some of my favorite songs</h1>
+    <h2>made by Luis Rodriguez</h2>
+  </header>
+
+  <main>
+    <!-- Video Grid -->
+    <div id="videoContainer" class="video-grid">
+      <p style="color: var(--text-secondary)">Loading videos...</p>
+    </div>
+
+    <!-- About Section (Collapsible) -->
+    <div class="about-section">
+      <button class="about-toggle" id="aboutToggle">
+        <span class="toggle-icon">▶</span>
+        About this project
+      </button>
+      <div class="about-content" id="aboutContent">
+        <p class="about-text">
+          This is a weekend project I built in order to prepare for a technical interview I had for a NodeJS
+          development role. I didn't get the job, but I did learn a lot in the process haha.
+        </p>
+        <p>
+          The main focus
+          of the interview was about what I would do if I had to build a video streaming endpoint with NodeJS.
+          They gave me a few days in order to prepare and because I like to always do my best,
+          I decided to build both the backend for the video streaming endpoint, and a small frontend in order to consume
+          said endpoint and in consequence build a "complete" video streaming web application.
+        </p>
+        <p>
+          What's funny (at least for me) is that during the interview I didn't show them this project. Although when they <strong>did</strong>
+          asked me how I would implement such an endpoint, I think I did a pretty good job at explaining the main concepts and steps
+          on how to build it, that's what I take away from building this project. I was able to learn about the HTTP 206 Partial Content
+          status code, how to use Node.js Streams to efficiently stream video files, and how to handle range requests from clients.
+        </p>
+        <p>
+          As someone who almost always has worked on the frontend side of web applications, this project was a lot
+          of fun because it allowed me to do a dive little bit deeper into backend development (and DevOps a bit as well since I had
+          to deploy the project to a VPS). Overall, I think it was a great learning experience and I'm glad I took the time
+          to build it.
+        </p>
+        <p>
+          Now onto learn more new things and build more projects!
+        </p>
+        
+        <!-- <div class="about-grid">
+          Frontend Column
+          <div class="about-column">
+            <h3>Frontend</h3>
+            <p class="tech-subtitle">Client-Side Architecture</p>
+            <ul class="tech-list">
+              <li><strong>Core:</strong> HTML5, CSS3, Vanilla JavaScript</li>
+              <li><strong>Hosting:</strong> Cloudflare Pages</li>
+              <li><strong>Features:</strong>
+                <ul>
+                  <li>Native HTML5 video player</li>
+                  <li>Responsive CSS Grid layout</li>
+                  <li>Dynamic content via Fetch API</li>
+                  <li>Dark mode UI design</li>
+                </ul>
+              </li>
+            </ul>
+            <a href="https://github.com/Lrodriguez9719/personal-site" target="_blank" class="repo-link">
+              View Frontend Repo →
+            </a>
+          </div>
+
+          Backend Column
+          <div class="about-column">
+            <h3>Backend</h3>
+            <p class="tech-subtitle">Video Streaming API</p>
+            <ul class="tech-list">
+              <li><strong>Runtime:</strong> Node.js (v20) + Express.js</li>
+              <li><strong>Deployment:</strong> Ubuntu VPS, Nginx, PM2</li>
+              <li><strong>Security:</strong> SSL/TLS (Let's Encrypt), CORS</li>
+              <li><strong>Features:</strong>
+                <ul>
+                  <li>HTTP 206 Partial Content streaming</li>
+                  <li>Made with Node.js Streams</li>
+                  <li>Dynamic routing & metadata API</li>
+                  <li>Custom domain with reverse proxy</li>
+                </ul>
+              </li>
+            </ul>
+            <a href="https://github.com/Lrodriguez9719/node_video_streaming_endpoint" target="_blank" class="repo-link">
+              View Backend Repo →
+            </a>
+          </div>
         </div> -->
-    </nav>
+      </div>
+    </div>
 
-    <header>
-        <h1>Some of my favorite songs</h1>
-        <h2>made by Luis Rodriguez</h2>
-    </header>
+    <div class="tech-section">
+      <button class="about-toggle" id="techToggle">
+        <span class="toggle-icon">▶</span>
+        Technologies used
+      </button>
+      <div class="about-content" id="aboutTech">
+        
+        <div class="about-grid">
+          <!-- Frontend Column -->
+          <div class="about-column">
+            <h3>Frontend</h3>
+            <p class="tech-subtitle">Client-Side Architecture</p>
+            <ul class="tech-list">
+              <li><strong>Core:</strong> HTML5, CSS3, Vanilla JavaScript</li>
+              <li><strong>Hosting:</strong> Cloudflare Pages</li>
+              <li><strong>Features:</strong>
+                <ul>
+                  <li>Native HTML5 video player</li>
+                  <li>Responsive CSS Grid layout</li>
+                  <li>Dynamic content via Fetch API</li>
+                  <li>Dark mode UI design</li>
+                </ul>
+              </li>
+            </ul>
+            <a href="https://github.com/Lrodriguez9719/personal-site" target="_blank" class="repo-link">
+              View Frontend Repo →
+            </a>
+          </div>
 
-    <main>
-        <div id="videoContainer" class="video-grid">
-            <!-- Videos will be injected here by JS -->
-            <p style="color: var(--text-secondary)">Loading videos...</p>
+          <!-- Backend Column -->
+          <div class="about-column">
+            <h3>Backend</h3>
+            <p class="tech-subtitle">Video Streaming API</p>
+            <ul class="tech-list">
+              <li><strong>Runtime:</strong> Node.js (v20) + Express.js</li>
+              <li><strong>Deployment:</strong> Ubuntu VPS, Nginx, PM2</li>
+              <li><strong>Security:</strong> SSL/TLS (Let's Encrypt), CORS</li>
+              <li><strong>Features:</strong>
+                <ul>
+                  <li>HTTP 206 Partial Content streaming</li>
+                  <li>Made with Node.js Streams</li>
+                  <li>Dynamic routing & metadata API</li>
+                  <li>Custom domain with reverse proxy</li>
+                </ul>
+              </li>
+            </ul>
+            <a href="https://github.com/Lrodriguez9719/node_video_streaming_endpoint" target="_blank" class="repo-link">
+              View Backend Repo →
+            </a>
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
+  </main>
 
-    <script src="../js/index.js"></script>
+  <script src="../js/video_streaming.js"></script>
 </body>
+
 </html>
