@@ -270,9 +270,11 @@
   </footer>
 
   <script>
-    gtag('event', 'resume_download', {
-      'event_category': 'engagement',
-      'event_label': 'Resume Downloaded'
+    document.querySelector('.download-resume-btn').addEventListener('click', function() {
+      gtag('event', 'resume_download', {
+        'event_category': 'engagement',
+        'event_label': 'Resume Downloaded'
+      });
     });
   </script>
 </body>
