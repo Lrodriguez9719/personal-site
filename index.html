@@ -19,7 +19,7 @@
   <nav class="nav-bar">
     <!-- <a href="../index.html" class="nav-link">← Back to Home</a> -->
     <div class="nav-actions">
-      <a href="./resume/Luis_Rodriguez_Resume.pdf" download class="print-btn" style="text-decoration: none;">
+      <a href="./resume/Luis_Rodriguez_Resume.pdf" download class="print-btn" style="text-decoration: none;" class="download-resume-btn">
         Download as PDF
       </a>
     </div>
@@ -268,5 +268,12 @@
     <p>© 2024 Luis Rodriguez</p>
     <!-- <p>© 2024 Luis Rodriguez • <a href="../index.html">View Portfolio</a></p> -->
   </footer>
+
+  <script>
+    gtag('event', 'resume_download', {
+      'event_category': 'engagement',
+      'event_label': 'Resume Downloaded'
+    });
+  </script>
 </body>
 </html>
