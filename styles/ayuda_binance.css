@@ -1,0 +1,358 @@
+:root {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent: #f0b90b; /* Binance yellow */
+  --border-color: #333;
+  --warning: #ff6b6b;
+  --warning-bg: #2a1515;
+  --deadline-bg: #2a2410;
+  --success: #4ade80;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: var(--accent);
+}
+
+h2 {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 1.15rem;
+  margin-top: 0.75rem;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+h3 {
+  color: var(--accent);
+  font-size: 1.35rem;
+  margin-top: 0;
+}
+
+h4 {
+  margin-bottom: 0.4rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-card {
+  border-left: 4px solid var(--accent);
+}
+
+.note {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert-deadline {
+  background: var(--deadline-bg);
+  border: 1px solid var(--accent);
+}
+
+.alert-warning {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning);
+}
+
+.alert-warning strong:first-child {
+  color: var(--warning);
+  font-size: 1.1rem;
+}
+
+.alert-warning ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.alert-warning li {
+  margin-bottom: 0.5rem;
+}
+
+/* Lists */
+.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--success);
+  font-weight: bold;
+}
+
+.region-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.region-list li {
+  background: #2a2410;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* Steps */
+.steps-section {
+  margin: 2.5rem 0;
+}
+
+.steps-title {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.steps-intro {
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  padding-left: 0;
+}
+
+.step {
+  counter-increment: step;
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.step::before {
+  content: counter(step);
+  position: absolute;
+  left: 1.25rem;
+  top: 1.4rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--accent);
+  color: #121212;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step h4 {
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+.step p {
+  margin: 0.4rem 0 0;
+}
+
+/* Screenshots inside steps */
+.screenshot {
+  margin: 1.25rem 0 0;
+  text-align: center;
+}
+
+.screenshot img {
+  max-width: 100%;
+  max-height: 520px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.screenshot figcaption {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Placeholder shown when the screenshot file doesn't exist yet */
+.screenshot.pending {
+  border: 2px dashed var(--border-color);
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  color: var(--text-secondary);
+}
+
+.screenshot.pending::before {
+  content: "📷 Captura pendiente";
+  display: block;
+  font-size: 1rem;
+}
+
+.screenshot.pending figcaption {
+  margin-top: 0.4rem;
+}
+
+/* FAQ (reuses .about-toggle / .about-content from styles, customized here) */
+.faq-section {
+  margin: 2.5rem 0;
+}
+
+.faq-title {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.faq-item {
+  margin-bottom: 0.75rem;
+}
+
+.about-toggle {
+  width: 100%;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem 1.25rem;
+  font-size: 1.05rem;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-toggle:hover {
+  background: #252525;
+  border-color: var(--accent);
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.about-toggle.active .toggle-icon {
+  transform: rotate(90deg);
+}
+
+.about-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.about-content.open {
+  max-height: 500px;
+  padding: 1.25rem;
+}
+
+/* Links & sources */
+.link-list,
+.sources-card .link-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.link-list li {
+  margin-bottom: 0.6rem;
+}
+
+.link-list a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-list a:hover {
+  text-decoration: underline;
+}
+
+.disclaimer {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.resume-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .step {
+    padding: 1.25rem 1rem 1.25rem 4rem;
+  }
+}
